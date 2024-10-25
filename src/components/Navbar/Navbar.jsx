@@ -2,7 +2,7 @@ const Navbar = () => {
   return (
     <nav className="flex justify-between items-center border border-yellow-400 px-3">
       <div className="p-4 ">
-        <img src="../public/assets/logo.png" alt="logo" />
+        <img src="/assets/logo.png" alt="logo" />
       </div>
 
       <div className="flex gap-3 items-center text-[#131313B3] text-opacity-70">

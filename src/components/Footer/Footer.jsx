@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="relative bg-[#06091A] py-8">
       <div className="flex flex-col gap-6 items-center mt-28">
-        <img src="/public/assets/logo-footer.png" alt="" />
+        <img src="/assets/logo-footer.png" alt="footer-png" />
 
         <div className="flex justify-between mt-16 mb-18 text-white">
           <div className="flex-1">
