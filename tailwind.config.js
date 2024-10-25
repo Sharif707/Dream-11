@@ -8,6 +8,8 @@ export default {
     extend: {
       backgroundImage: {
         'custom-image': "url('/public/assets/bg-shadow.png')",
+        'subscribe-gradient': 'linear-gradient(90deg, #FFD700, #FF69B4)',
+         'newsletter-gradient': 'linear-gradient(to left, #FDE9D9, #FFFFFF)',
       },
     },
   },
