@@ -3,7 +3,7 @@
 import { toast } from 'react-toastify';
 
 
-const Banner = () => {
+const Banner = ({handleCoin}) => {
     const notify = () => toast.success("Hurrah You have earned free coins");
     
 
@@ -23,7 +23,10 @@ const Banner = () => {
         <p className="text-[#ffffff] text-opacity-70 font-medium tracking-wider">
           Beyond Boundaries Beyond Limits
         </p>
-        <button onClick={notify} className="bg-[#E7FE29] py-3 px-5 rounded-xl mt-3 md:mt-6 text-black">
+        <button onClick={() => {
+          notify()
+          handleCoin()
+        }} className="bg-[#E7FE29] py-3 px-5 rounded-xl mt-3 md:mt-6 text-black">
         Claim Free Credit
         </button>
    

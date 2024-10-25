@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
-import SinglePlayer from '../SinglePlayer/SinglePlayer';
 
-const PlayerContainer = ({allplayers, isAvailable, handleIsAvailable }) => {
+import Selected from '../Selected/Selected';
+import Available from '../Available/Available';
+
+const PlayerContainer = ({allplayers, isAvailable, handleIsAvailable, handleSelectPlayer, selectPlayer }) => {
   // console.log(allplayers);
+  // console.log(selectPlayer);
     return (
         <div>
               <div className="flex justify-between items-center px-3 py-4">
@@ -14,23 +17,28 @@ const PlayerContainer = ({allplayers, isAvailable, handleIsAvailable }) => {
           }} className={`${isAvailable.isAvailable? 'bg-[#E7FE29] text-[#131313] py-3 px-5 rounded-lg' : 'py-3 px-5'}`}>Available</button>
             <button onClick={() => {
             handleIsAvailable('unavailable')
-          }} className={`${isAvailable.isAvailable? 'py-3 px-5' : 'py-3 px-5 bg-[#E7FE29] text-[#131313] rounded-lg'}`}>Selected</button>
+          }} className={`${isAvailable.isAvailable? 'py-3 px-5' : 'py-3 px-5 bg-[#E7FE29] text-[#131313] rounded-lg'}`}>Selected({selectPlayer.length})</button>
           </div>
   
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-6 mb-60">
-          {
-            allplayers.map((player) => <SinglePlayer player={player} key={player.playerId}></SinglePlayer>)
-          }
+        
+         {
+          isAvailable.isAvailable?  <Available handleSelectPlayer={handleSelectPlayer} allplayers={allplayers}></Available> :  <Selected selectPlayer={selectPlayer}></Selected>
+         }
+          
+         
+        
 
-        </div>
+       
         </div>
     );
 };
 PlayerContainer.propTypes = {
   allplayers: PropTypes.array,
+  selectPlayer: PropTypes.array,
   handleIsAvailable: PropTypes.func,
+  handleSelectPlayer: PropTypes.func,
   isAvailable: PropTypes.object.isRequired
 }
 
