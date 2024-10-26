@@ -1,6 +1,6 @@
 const Navbar = ({coin}) => {
   return (
-    <nav className="flex justify-between items-center border border-yellow-400 px-3">
+    <nav className="flex justify-between items-center px-3">
       <div className="p-4 ">
         <img src="/assets/logo.png" alt="logo" />
       </div>

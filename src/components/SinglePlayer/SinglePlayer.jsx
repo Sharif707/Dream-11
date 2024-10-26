@@ -7,7 +7,7 @@ const SinglePlayer = ({ player, handleSelectPlayer,  }) => {
   const { name,  image, role, battingType, bowlingType, biddingPrice } =
     player;
   return (
-    <div className="p-6 rounded-2xl border border-yellow-400">
+    <div className="p-6 rounded-2xl">
       <img
         className="w-full h-60 object-cover rounded-2xl"
         src={image}

@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="flex flex-col gap-6 items-center mt-28">
         <img src="/assets/logo-footer.png" alt="footer-png" />
 
-        <div className="flex justify-between mt-16 mb-18 text-white">
+        <div className="flex flex-col md:flex-row justify-between mt-16 mb-18 text-white">
           <div className="flex-1">
             <h3 className="text-lg font-semibold">About us</h3>
             <p className="mt-4 text-white text-opacity-60 w-3/5">
@@ -26,7 +26,7 @@ const Footer = () => {
           <div className="flex-1 ">
             <h2 className="text-lg font-semibold">Subscribe</h2>
             <p className="text-white text-opacity-60 my-4">Subscribe to our newsletter for the latest updates.</p>
-            <label>
+            <label className="space-x-2">
                 <input className="border border-opacity-15 py-3 px-5" type="email" placeholder="Enter Your Email"/>
                 <button className="py-3 px-5 rounded-xl text-center text-xl font-semibold bg-[#007BFF]">Subscribe</button>
             </label>
