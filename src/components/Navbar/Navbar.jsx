@@ -1,6 +1,8 @@
+
+import PropTypes from 'prop-types';
 const Navbar = ({coin}) => {
   return (
-    <nav className="flex justify-between items-center px-3">
+    <nav className="flex justify-between items-center px-3 shadow-custom-gray sticky top-0 bg-[#ffffffca] backdrop-blur-sm z-50">
       <div className="p-4 ">
         <img src="/assets/logo.png" alt="logo" />
       </div>
@@ -33,5 +35,7 @@ const Navbar = ({coin}) => {
     </nav>
   );
 };
-
+Navbar.propTypes = {
+  coin: PropTypes.number
+}
 export default Navbar;

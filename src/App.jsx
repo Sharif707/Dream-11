@@ -64,7 +64,7 @@ function App() {
   
     const removeChosenPlayers = selectPlayer.filter((p) => p.playerId !== id);
     setSelectPlayer(removeChosenPlayers);
-    
+    notify4()
   };
 
   const handleIsAvailable = (status) => {
