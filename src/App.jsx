@@ -6,12 +6,15 @@ import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import PlayerContainer from "./components/PlayerContainer/PlayerContainer";
 import { toast } from "react-toastify";
+import SinglePlayer from "./components/SinglePlayer/SinglePlayer";
 
 function App() {
   const [allplayers, setAllPlayers] = useState([]);
   const notify = () => toast.success("You have succesfully added");
   const notify2 = () => toast.error("You don't have enough coins");
   const notify3 = () => toast.error("Selection limit reached");
+  const notify4 = () => toast.error("Player Deleted Succesfully");
+  const notify5 = () => toast.error("Already Exists");
 
   useEffect(() => {
     fetch("fake-data.json")
@@ -26,38 +29,42 @@ function App() {
 
   const [coin, setCoin] = useState(0);
   const handleCoin = () => {
-    const newCoin = coin + 1000000;
+    const newCoin = coin + 5000000;
     setCoin(newCoin);
-    console.log("it worked");
   };
 
-  const [chosenPlayers, setChosenPlayers] = useState([])
-  const handleChosenPlayers = (selectedPlayer) => {
-    setChosenPlayers(...chosenPlayers, selectedPlayer)
-  }
-
   const [selectPlayer, setSelectPlayer] = useState([]);
-  const handleSelectPlayer = (Playerprice, player) => {
-    if (coin > 0 && coin >= Playerprice) {
-      const updatedCoin = coin - Playerprice
-      setCoin(updatedCoin)
-      
-      
-      if(selectPlayer.length < 6){
-        const updatedSelection = [...selectPlayer, player ]
-        setSelectPlayer(updatedSelection)
-        notify();
-        handleChosenPlayers(player.name)
-      }
-      else{
-        notify3()
-
-      }
-       
-     
+  const handleSelectPlayer = (selectedPlayer) => {
+    const { biddingPrice } = selectedPlayer;
+    console.log(selectedPlayer);
+    const isExist = selectPlayer.find(
+      (p) => p.playerId == selectedPlayer.playerId
+    );
+    if (isExist) {
+      notify5();
+    } else if (coin < biddingPrice) {
+      notify2()
+    } else if (selectPlayer.length == 6) {
+      notify3();
     } else {
-      notify2();
+      const updatedChosenPlayer = [...selectPlayer, selectedPlayer];
+      setSelectPlayer(updatedChosenPlayer);
+      const updatedCoin = coin - biddingPrice;
+      setCoin(updatedCoin);
+      notify();
     }
+  };
+
+ 
+
+  const handleDeleteButton = (id) => {
+    const newArr = selectPlayer.find((player) => player.playerId == id)
+   const biddingprice = newArr.biddingPrice
+   setCoin(coin + biddingprice)
+  
+    const removeChosenPlayers = selectPlayer.filter((p) => p.playerId !== id);
+    setSelectPlayer(removeChosenPlayers);
+    
   };
 
   const handleIsAvailable = (status) => {
@@ -84,6 +91,7 @@ function App() {
           handleSelectPlayer={handleSelectPlayer}
           isAvailable={isAvailable}
           handleIsAvailable={handleIsAvailable}
+          handleDeleteButton={handleDeleteButton}
           allplayers={allplayers}
           selectPlayer={selectPlayer}
         ></PlayerContainer>

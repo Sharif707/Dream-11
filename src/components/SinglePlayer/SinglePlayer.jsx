@@ -1,7 +1,7 @@
 // import React from 'react';
 
 import PropTypes from "prop-types";
-const SinglePlayer = ({ player, handleSelectPlayer }) => {
+const SinglePlayer = ({ player, handleSelectPlayer,  }) => {
  
   // console.log(player);
   const { name,  image, role, battingType, bowlingType, biddingPrice } =
@@ -55,7 +55,7 @@ const SinglePlayer = ({ player, handleSelectPlayer }) => {
       <div className="flex items-center justify-between my-3">
         <p>Price: ${biddingPrice}</p>
         <button onClick={() => {
-          handleSelectPlayer(biddingPrice, player)
+          handleSelectPlayer(player)
       
         }} className="text-[#131313] text-opacity-60 py-2 px-4 rounded-lg bg-[#131313] bg-opacity-5">Choose Player</button>
       </div>
@@ -65,6 +65,7 @@ const SinglePlayer = ({ player, handleSelectPlayer }) => {
 SinglePlayer.propTypes = {
   player: PropTypes.object,
   handleSelectPlayer: PropTypes.func,
+  
 };
 
 export default SinglePlayer;
